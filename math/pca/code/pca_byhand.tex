@@ -1,0 +1,128 @@
+\documentclass[14pt]{article}
+
+\usepackage{amsmath}
+\usepackage[colorlinks=true, allcolors=blue]{hyperref}
+
+\title{Milestone 1: Eigenvalues and Eigenvectors of a Matrix}
+\author{Ellie}
+
+\begin{document}
+\maketitle
+
+\section{Compute the eigenvalues and eigenvectors of the matrix}
+ 
+  $$
+    A = \left[\begin{array}{ll}
+    8 & 3  \\
+    2 & 7 
+    \end{array}\right]
+  $$
+
+\section{Find the determinant of $\det(\mathbf{A} - \lambda\mathbf{I})$}
+   $$
+    \det(\mathbf{A} - \lambda\mathbf{I}) = \left|\begin{array}{ll}
+    8-\lambda & 3  \\
+    2 & 7-\lambda 
+    \end{array}\right|
+    $$
+    $$
+    = (8-\lambda)(7-\lambda) - 6
+    $$
+    $$
+    = \lambda^2 - 15\lambda + 50
+    $$
+
+\section{Solve for the eigenvalues}
+    $$
+    \lambda^2 - 15\lambda + 50 = 0
+    $$
+    $$
+    \lambda = \frac{-(-15) \pm \sqrt{(-15)^2 - 4(1)(50)}}{2(1)}
+    $$
+    $$
+    = \frac{15 \pm \sqrt{225 - 200}}{2}
+    $$
+    $$
+    = \frac{15 \pm \sqrt{25}}{2}
+    $$
+    $$
+    = \frac{15 \pm 5}{2}
+    $$
+    $$
+    = 10, 5
+    $$
+
+\section{Solve for the eigenvectors}
+
+\begin{flushleft}
+For $\boldsymbol{\lambda = 10}$:
+\end{flushleft}
+
+$$
+(\mathbf{A} - 10\mathbf{I})\vec{x} = \left[\begin{array}{ll}
+-2 & \phantom{-}3  \\
+\phantom{-}2 & -3 
+\end{array}\right] \begin{bmatrix}
+x_1 \\
+x_2
+\end{bmatrix} = \mathbf{0}
+$$
+
+
+Solving the system of equations:
+    \begin{equation}
+        \begin{cases}
+          -2x_1 + 3x_2 &= 0 \\
+          \phantom{-}2x_1 - 3x_2 &= 0
+        \end{cases}
+    \end{equation}
+
+gives $x_1$ being any real number and $x_2 = \frac{2}{3}x_1$. Thus any vector of the form
+    
+    $\left[\begin{array}{r}
+             x_1  \\
+              \frac{2}{3}x_1
+           \end{array}\right]$ is an eigenvector for $\lambda = 10$.  
+A specific example is $\mathbf{x} = \left[\begin{array}{l}
+                        3  \\
+                        2 
+                       \end{array}\right]$
+    
+\vspace{2\baselineskip}
+\begin{flushleft}
+For $\boldsymbol{\lambda = 5}$:
+\end{flushleft}
+    $$
+    (\mathbf{A} - 5\mathbf{I})\vec{y} = \left[\begin{array}{ll}
+        3 & 3  \\
+        2 & 2 
+    \end{array}\right] \begin{bmatrix}
+        y_1 \\
+        y_2
+    \end{bmatrix} = \mathbf{0}
+    $$
+
+Solving the system of equations:
+
+    $$
+        \begin{cases}
+          3y_1 + 3y_2 = 0 \\
+          2y_1 + 2y_2 = 0
+        \end{cases}
+    $$
+
+    gives $y_1$ being any real number and $y_2$ = $- y_1$. Thus, any vector of the form 
+
+    $\left[\begin{array}{r}
+    y_1  \\
+    - y_1
+    \end{array}\right]$ where $y_1$ is a any real number, is an eigenvector for $\lambda = 5$.\\ 
+    
+    A specific example is  $$ \mathbf{y} = \left[\begin{array}{r}
+                                            1  \\
+                                            -1 
+                                \end{array}\right]
+                            $$
+
+
+\end{document}
