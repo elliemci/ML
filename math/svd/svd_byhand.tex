@@ -1,0 +1,225 @@
+\documentclass[14pt]{article}
+
+\usepackage{amsmath}
+\usepackage[colorlinks=true, allcolors=blue]{hyperref}
+\usepackage[margin=1in]{geometry} % Set the margin to 1 inch
+
+\title{Single Value Decomposition of a Mattrix}
+\author{Ellie}
+
+\begin{document}
+\maketitle
+
+\section{Compute the $\mathbf{A^T}$  and $\mathbf{A^TA}$ for the given matrix}
+ 
+  $$
+    A = \left[\begin{array}{ll}
+    4 & \phantom{-}0  \\
+    3 & -5 
+    \end{array}\right]
+  $$
+
+  $$
+  \mathbf{A^T} = \left[\begin{array}{ll}
+  4 & 3  \\
+  0 & -5 
+  \end{array}\right]
+  $$
+
+\section{Find the eigenvalues of $\mathbf{A^TA}$, sort them in descending order}
+
+    \begin{flalign*}
+    &\mathbf{A^TA} = \left[\begin{array}{ll}
+    4 & 3  \\
+    0 & -5 
+    \end{array}\right] \left[\begin{array}{ll}
+    4 & 0  \\
+    3 & -5 
+    \end{array}\right] = \left[\begin{array}{ll}
+    \phantom{-}25 & -15  \\
+    -15 & \phantom{-}25 
+    \end{array}\right] 
+    = (25-\lambda)^2 - 15^2  = (25-\lambda - 15)(25 - \lambda+ 15)
+    \end{flalign*}
+
+    \begin{flalign*}
+    = (10-\lambda)(40-\lambda) = 0 \\
+    \lambda_1 = 40, \lambda_2 = 10
+    \end{flalign*}
+
+\section{Construct $\Sigma$ as a diagonal matrix of the singular values = square roots of the eigenvalues of 
+$\mathbf{A^TA}$ and find $\Sigma^{-1}$}
+$$
+\Sigma = \left[\begin{array}{ll}
+\sqrt{40}  & 0  \\
+0 & \sqrt{10}  
+\end{array}\right]
+$$
+
+Since $\Sigma$ is diagonal, its inverse is simply the reciprocal of the diagonal elements:
+
+\begin{flalign*}
+&\Sigma^{-1} = \left[\begin{array}{ll}
+\frac{1}{\sqrt{40}}  & 0  \\
+0 & \frac{1}{\sqrt{10}} 
+\end{array}\right] = \left[\begin{array}{ll}
+0.1581 & 0  \\
+0 & 0.3162
+\end{array}\right]
+\end{flalign*}
+
+\section{Constrruct $\mathbf{V}$ with columns the unit eigenvectors of $\mathbf{A^TA}$}
+
+\begin{flalign*}
+\boldsymbol{\lambda = 40}: 
+\end{flalign*}
+
+$$
+(\mathbf{A} - 40\mathbf{I})\vec{X} = \left[\begin{array}{ll}
+(25-40) & -15  \\
+-15 & (25-40) 
+\end{array}\right]\begin{bmatrix}
+x_1 \\
+x_2
+\end{bmatrix} = \mathbf{0}
+$$
+
+Solving the system of equations:
+    \begin{equation}
+        \begin{cases}
+          -15x_1 - 15x_2 &= 0 \\
+          -15x_1 - 15x_2 &= 0
+        \end{cases}
+    \end{equation}
+
+which results in $x_2 = -x_1$. Thus, for any real number $x_1$, a vector of the form
+    $\vec{X} = \left[\begin{array}{r}
+            \phantom{-}x_1  \\
+            -x_1
+           \end{array}\right]$
+
+is an eigenvector of $\mathbf{A^TA}$ corresponding to $\lambda = 40$.
+To make it an unit length divide by its magnitude  \\
+$$\left\lVert X \right\rVert = 
+\sqrt{x_1^2 + x_2^2} = \sqrt{2x_1^2} = \sqrt{2}x_1
+$$
+
+Hence, $\hat{X} = \left[\begin{array}{l}
+                       \phantom{-}\frac{1}{\sqrt{2}}  \\
+                      -\frac{1}{\sqrt{2}} 
+                       \end{array}\right]$
+is the unit eigenvector coresponding to $\lambda = 40$
+    
+\begin{flalign*}
+    \boldsymbol{\lambda = 40}: 
+    \end{flalign*}
+    
+    $$
+    (\mathbf{A} - 10\mathbf{I})\vec{Y} = \left[\begin{array}{ll}
+    (25-10) & -15  \\
+    -15 & (25-10) 
+    \end{array}\right]\begin{bmatrix}
+    y_1 \\
+    y_2
+    \end{bmatrix} = \mathbf{0}
+    $$
+    
+    Solving the system of equations:
+        \begin{equation}
+            \begin{cases}
+              \phantom{-}15y_1 - 15y_2 &= 0 \\
+              -15y_1 + \phantom{-}15y_2 &= 0
+            \end{cases}
+        \end{equation}
+    
+    which results in $y_2 = -y_1$. Thus, for any real number $y_1$, a vector of the form
+        $\vec{X} = \left[\begin{array}{r}
+                y_1  \\
+                y_1
+               \end{array}\right]$
+    
+    is an eigenvector of $\mathbf{A^TA}$ corresponding to $\lambda = 10$.
+    To make it an unit length divide by its magnitude  \\
+    $$\left\lVert Y \right\rVert = 
+    \sqrt{y_1^2 + y_2^2} = \sqrt{2y_1^2} = \sqrt{2}y_1
+    $$
+    
+    Hence, $\hat{Y} = \left[\begin{array}{l}
+                           \frac{1}{\sqrt{2}}  \\
+                            \frac{1}{\sqrt{2}} 
+                           \end{array}\right]$
+    is the unit eigenvector coresponding to $\lambda = 10$
+
+    Thus the matrix $\mathbf{V} = \begin{bmatrix} \hat{X}, \hat{Y}\end{bmatrix}$
+is  given by:
+\[
+\mathbf{V} = \left[\begin{array}{ll}
+\phantom{-}\frac{1}{\sqrt{2}} & \frac{1}{\sqrt{2}}  \\
+-\frac{1}{\sqrt{2}} & \frac{1}{\sqrt{2}}
+\end{array}\right]
+\]
+and its transpose is: 
+$$
+\mathbf{V^T} = \left[\begin{array}{ll}
+\frac{1}{\sqrt{2}} & -\frac{1}{\sqrt{2}}  \\
+\frac{1}{\sqrt{2}} & \phantom{-}\frac{1}{\sqrt{2}}
+\end{array}\right]
+$$
+
+\section{Construct $\mathbf{U} = \mathbf{A}\mathbf{V}\bf{\Sigma}^{-1}$}
+
+    \begin{flalign*}
+    &\mathbf{U} = \left[\begin{array}{ll}
+    4  & \phantom{-}0  \\
+    3  & -5
+    \end{array}\right] \left[\begin{array}{ll}
+    \phantom{-}\frac{1}{\sqrt{2}} & \frac{1}{\sqrt{2}}  \\
+    -\frac{1}{\sqrt{2}} & \frac{1}{\sqrt{2}}
+    \end{array}\right] \left[\begin{array}{ll}
+    0.1581 & 0  \\
+    0 & 0.3162
+    \end{array}\right] = \left[\begin{array}{ll}
+    4  & \phantom{-}0  \\
+    3  & -5
+    \end{array}\right] \left[\begin{array}{ll}
+    \phantom{-}\frac{\sqrt{5}}{20} & \frac{\sqrt{5}}{10}  \\
+    -\frac{\sqrt{5}}{20} & \frac{\sqrt{5}}{10}
+    \end{array}\right] = \left[\begin{array}{ll}
+    \frac{\sqrt{5}}{5} & \phantom{-}\frac{2\sqrt{5}}{5}  \\
+    \frac{2\sqrt{5}}{5} & -\frac{\sqrt{5}}{5}
+    \end{array}\right]  \approx \left[\begin{array}{ll}
+    0.4472  & \phantom{-}0.8944  \\
+    0.8944  & -0.4472
+    \end{array}\right] &
+    \end{flalign*}
+
+\section{Check if we get the matrix A from the matrix multiplication}
+
+\begin{flalign*}
+    \mathbf{U} &= \left[\begin{array}{ll}
+    0.4472  & \phantom{-}0.8944  \\
+    0.8944  & -0.4472
+    \end{array}\right] \left[\begin{array}{ll}
+    6.3246 & 0  \\
+    0 & 3.1623
+    \end{array}\right] \left[\begin{array}{ll}
+    0.7071 & -0.7071  \\
+    0.7071 & \phantom{-}0.7071
+    \end{array}\right] = \left[\begin{array}{ll}
+    0.4472  & \phantom{-}0.8944  \\
+    0.8944  & -0.4472
+    \end{array}\right] \left[\begin{array}{ll}
+    4.4721 & -4.4721  \\
+    2.2361 & 2.2361
+    \end{array}\right] \\ 
+    &= \left[\begin{array}{ll}
+    3.9998 & 0.00004  \\
+    2.9999 & -4.9998
+    \end{array}\right]  \approx \left[\begin{array}{ll}
+    4  & \phantom{-}0  \\
+    3  & -5
+    \end{array}\right] = \mathbf{A} &
+    \end{flalign*}
+
+
+\end{document}
